@@ -8,28 +8,32 @@ export default function Products() {
   const { fetchdata, cartitem } = context;
 
   useEffect(() => {
-    fetchdata;
-  }, [1]);
+    fetchdata();
+  }, []);
 
-  // const handledata = async () => {
-  //   fetchdata();
-  // };
+  const allItems = cartitem?.products?.data?.items?.[0];
+  // const value = cartitem?.products?.data?.items;
+  // console.log("this in products value", allItems);
+
   return (
-    <div className="d-flex flex-wrap">
-      {/* <h3>this is cart store</h3> */}
-      {/* <button onClick={handleda            features={item.features}
-ta}></button> */}
-      {Object.values(cartitem).map((item) => {
-        console.log(item.quantity)
-        // return (
-        //   <Productitem
-        //     key={item.id}
-        //     title={item.title}
-        //     description={item.description}
-        //     quantity={item.quantity}
-        //   />
-        // );
-      })}
+    <div className="d-flex flex-wrap justfy-content-center">
+      {allItems ? (
+        allItems.map((item, index) => (
+          <Productitem
+            key={index}
+            id={item._id}
+            title={item.title}
+            price={item.price}
+            oldprice={item.oldPrice}
+            description={item.description && item.description.slice(0, 60)}
+            img={item.image}
+          />
+        ))
+      ) : (
+        <div className="spinner-border" role="status">
+        <span className="sr-only"></span>
+      </div>
+      )}
     </div>
   );
 }
