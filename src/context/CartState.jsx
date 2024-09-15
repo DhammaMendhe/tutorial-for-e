@@ -28,11 +28,10 @@ const CartState = (props) => {
       // console.log("into add to cart", value);
 
       const cartproduct = value.find((product) => product._id === id);
-      // console.log("before use", cartproduct);
+      console.log("before use", cartproduct);
       if (cartproduct) {
         setaddedtocart((prevcart) => [...prevcart, cartproduct]);
       }
-
       console.log("after use", addedtocart);
     }
   };

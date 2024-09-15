@@ -1,16 +1,21 @@
 import React, { useContext, useEffect } from "react";
 import CartContext from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 function ShowProductitems(props) {
-  // const context = useContext(CartContext);
-  // const { addtocartitems,addedtocart } = context;
+  const context = useContext(CartContext);
+  const { addtocartitems,addedtocart } = context;
 
+const navigation = useNavigate();
   
-  // useEffect(() => {
-  //   addedtocart()
-  // }, [])
 
-  
+  const handlecart = (id)=>{
+console.log("handle cart id",id);
+addtocartitems(id);
+navigation("/cart");
+  }
+
+
   return (
     <div className="d-flex justify-content-center">
       {" "}
@@ -26,7 +31,7 @@ function ShowProductitems(props) {
         </div>
 
         <div className="addtocart">
-          <button onClick={()=>addedtocart(props.id)} className="btn"> add to cart </button>
+          <button onClick={()=>handlecart(props.id)} className="btn"> add to cart </button>
         </div>
       </div>
     </div>

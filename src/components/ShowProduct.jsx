@@ -31,7 +31,8 @@ function ShowProduct(props) {
                 img={item.image}
               />
             ) : (
-              <p>{" "}</p>
+              null
+              // <p>{" "}</p>
             )
           )
         ) : (
